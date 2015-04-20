@@ -1,0 +1,93 @@
+<!DOCTYPE html> 
+<html>
+
+<head>
+  <title>Current Time KPI</title>
+  <meta name="description" content="website description" />
+  <meta name="keywords" content="website keywords, website keywords" />
+  <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <!-- modernizr enables HTML5 elements and feature detects -->
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+  <script>
+  function getDate()
+  {
+	  
+	  var d1 = new Date();
+	 var d2=d1.toUTCString();
+	 document.getElementById("kpiTime").innerHTML=d2;
+  }
+  </script>
+</head>
+
+<body>
+  <div id="main">
+    <header>
+	  <div id="banner">
+	    <div id="welcome">
+	      <h2>Current Time KPI</h2>
+	    </div><!--close welcome-->			  	
+	  </div><!--close banner-->	
+	</header>
+	
+	<nav>      
+      <div id="menubar">
+        <ul id="nav">
+          <li><a href="dashboard.html">Home</a></li>
+          <li><a href="#">Tool Management</a></li>
+          <li><a href="elementManagement.html">Element Management</a></li>
+          <li><a href="kpiManagement.html">KPI Management</a></li>
+          <li><a href="scheduleManagement.html">Schedule Management</a></li>
+          <li><a href="historyManagement.html">History Management</a></li> 
+        </ul>
+      </div>
+     
+    </nav>	
+    
+	<div id="site_content" style="min-height:200px">		
+
+    	 <div class="toolButtons">
+	  <span class="button_small" id="viewSchedule">
+		      <input type="submit" value="Current Time KPI List" class="newBtn" onclick="getDate();"/>
+	  </span>
+      </div>
+      <div class="alignCenter" id="kpiDisplay"> 
+      <p><label>Current Time in GMT:</label>
+      
+      	<label id="kpiTime"></label>
+      </p>
+      
+      <table id="currentTimeKpi" class="alignCenter">
+      	<tr><th>KPI ID</th><th>KPI NAME</th></tr>
+      	<tr>
+      	<td>1</td>
+                    <td>attach_lte</td></tr>
+                    <tr>
+                    <td>2</td>
+                    <td>paging_lte</td></tr>
+                    <tr>
+                    <td>4</td>
+                    <td>Create_Sess_Succ</td>
+                    </tr>
+                    
+                    
+      	
+      </table>
+      
+      </div>
+	</div><!--close site_content-->  	
+  
+    <footer>
+	  <a href="index.html">Home</a> | <a href="ourwork.html">Our Work</a> | <a href="testimonials.html">Testimonials</a> | <a href="projects.html">Projects</a> | <a href="contact.html">Contact</a><br/><br/>
+	  
+    </footer> 
+  
+  </div><!--close main-->
+  
+  <!-- javascript at the bottom for fast page loading -->
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript" src="js/sample.js"></script>
+  
+  
+</body>
+</html>
