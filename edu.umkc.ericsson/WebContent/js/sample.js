@@ -1,7 +1,33 @@
 // JavaScript Document
 
 $(document).ready(function() { 
-	$("#viewTool").click(function(){
+	/*var returnData;
+	var returnJson;
+	alert("in sample.js");
+	$.ajax({
+		
+		url:"http://kc-sce-cs551-2.kc.umkc.edu/aspnet_client/EPG7/Hackathon/WcfService2/dbService.svc/getScheduleData",
+		async:false,
+		dataType:'json',
+		success: function(JSONdata){
+			alert("in sample.js sucess");
+		    returnData=JSONdata;
+		    
+		},
+		error: function(ts){
+			debugger;
+			alert("in sample.js error");
+			alert(ts.responseText);
+		}
+		
+	});
+	var arrayReturn = [], results=returndata
+	for (var i=0,len=results.length;i<len;i++)
+		{
+		var result = results[i];
+		alert(result.schId);
+		}
+*/	$("#viewTool").click(function(){
 		$("#outerContainer div").css("display","none");
 		$(".view").css("display","block");
 	});
@@ -116,33 +142,8 @@ $(document).ready(function() {
 		    });  
 });
 
-jQuery(function(){
-	
-    var counter = 1;
-    newRow = jQuery('<tr><td><input type="text" value="" name="scheduleid' +
-            counter + '"/></td><td><input type="text" value="Day" name="schedulename' +
-            counter + '"/></td><td><input type="text" value="7" name="starthour' +
-            counter + '"/><td><input type="text" value="23" name="endhour' +
-            counter + '"/></tr>');
-    counter++;
-    jQuery('table.ScheduleTab').append(newRow);
-    newRow = jQuery('<tr><td><input type="text" value="2" name="scheduleid' +
-            counter + '"/></td><td><input type="text" value="Night" name="schedulename' +
-            counter + '"/></td><td><input type="text" value="0" name="starthour' +
-            counter + '"/><td><input type="text" value="3" name="endhour' +
-            counter + '"/></tr>');
-    jQuery('table.ScheduleTab').append(newRow);
-    jQuery('a.add-schedule').click(function(event){
-    	
-        event.preventDefault();
-        counter++;
-        var newRow = jQuery('<tr><td><input type="text" name="scheduleid' +
-            counter + '"/></td><td><input type="text" name="schedulename' +
-            counter + '"/></td><td><input type="text" name="starthour' +
-            counter + '"/><td><input type="text" name="endhour' +
-            counter + '"/></tr>');
-        jQuery('table.ScheduleTab').append(newRow);
-        
-    });
-});
+
+
+
+
 

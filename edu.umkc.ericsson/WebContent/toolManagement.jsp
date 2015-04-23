@@ -31,7 +31,7 @@
 	
 	<nav>      
       <div id="menubar">
-        <ul id="nav">
+        <ul id="nav">  
           <li><a href="dashboard.html">Home</a></li>
           <li class="current"><a href="#">Tool Management</a></li>
           
@@ -172,16 +172,16 @@
         </div><!-- status close-->
         </div><!-- outerContainer close-->
         <div class="toolButtons">
-	  <span class="button_small" id="viewTool">
+	  <!-- <span class="button_small" id="viewTool">
 		      <a href="#">ViewTool</a>
-	  </span>
+	  </span> -->
       <span class="button_small" id="addTool">
-		      <a href="#">AddTool</a>
+	<!-- TODO sathya -->   <a href="#" onclick="hideElement()">AddTool</a>
 	  </span>
      
-      <span class="button_small" id="statusTool">
+      <!-- <span class="button_small" id="statusTool">
 		      <a href="#">ToolStatus</a>
-	  </span>
+	  </span> -->
       </div><!-- buttons close-->
     
 	</div><!--close site_content-->  	

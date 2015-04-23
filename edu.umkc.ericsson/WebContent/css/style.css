@@ -516,5 +516,16 @@ table#container tr,td{ border:none;}
 	#currentTimeKpi{margin:0 auto;}
 	#kpiDisplay{display:none;}
 	.newBtn{background:none;border:none;'}
-	
+#Message {margin-top:20px; text-align:center; }
+table#ElementTab tbody tr {
+    background-color: none !important;
+}
+table.dataTable tbody tr {
+  background-color: none !important;
+}
+#ElementTab_length,#ElementTab_filter, #ElementTab{text-align: center !important;
+    width: 100% !important;
+
+}
+#ElementTab_filter{padding-top: 20px !important;}
 	

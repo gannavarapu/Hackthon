@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import edu.umkc.ericsson.Test;
 import edu.umkc.ericsson.bo.ScheduleInfo;
+import edu.umkc.ericsson.model.UpdateSchedule_Model;
 
 /**
  * Servlet implementation class UpdateSchedule
@@ -32,21 +34,37 @@ public class UpdateSchedule extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		System.out.println("InUpdateSchedule::36");
 		ArrayList<ScheduleInfo> oldSchedule =new ArrayList<ScheduleInfo>();
-		oldSchedule.add(new ScheduleInfo(new Integer(request.getParameter("starthour1")),new Integer(request.getParameter("endhour1"))));
-		oldSchedule.add(new ScheduleInfo(new Integer(request.getParameter("starthour2")),new Integer(request.getParameter("endhour2"))));
-		oldSchedule.add(new ScheduleInfo(new Integer(request.getParameter("starthour3")),new Integer(request.getParameter("endhour3"))));
+		Boolean moreRows=true;
+		for(int i=1;moreRows!=false;i++){
+		String startTime = "starthour"+i;
+		String endTime = "endhour"+i;
+		String scheduleId = "scheduleid"+i;
+		String scheduleName = "schedulename"+i;
+		if(request.getParameter(startTime) != null){
 		
-		Test t = new Test();
-		if (t.schedule(oldSchedule))
+		oldSchedule.add(new ScheduleInfo(request.getParameter(scheduleName), new Integer(request.getParameter(startTime)),new Integer(request.getParameter(endTime)),new Integer(request.getParameter(scheduleId))));
+		
+		System.out.println("Added rows"+i);
+		}
+		else{
+		moreRows=false;
+		}
+		}
+		HttpSession session = request.getSession();
+		UpdateSchedule_Model updateSchedule = new UpdateSchedule_Model();
+		if (updateSchedule.schedule(oldSchedule))
 		{
-			request.setAttribute("Message", "Schedule Added Succecfully");
+			session.setAttribute("Message", "Schedule Added Succecfully");
+			System.out.println("Added::UpdateSchedule::53");
 		}
 		else
 		{
-			request.setAttribute("Message", "Please ensure  schedule is not Overlapping/covered 24 hours ");
+			session.setAttribute("Message", "Please ensure  schedule is not Overlapping/covered 24 hours ");
+			System.out.println("Sorry::UpdateSchedule::58");
 		}
-		response.sendRedirect("scheduleManagement.html#");
+		response.sendRedirect("DisplaySchedule");
 	}
 
 	/**

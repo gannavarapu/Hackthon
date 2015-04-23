@@ -6,8 +6,9 @@
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  
+<link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" /> 
+   
   <!-- modernizr enables HTML5 elements and feature detects -->
   <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
  
@@ -15,9 +16,9 @@
   
   #ElementTab_info{display:none;}
   #ElementTab_paginate{display:none;}
-  #ElementTab_filter,#ElementTab{text-align:center}
+  #ElementTab_filter,#ElementTab{width:100%;text-align:center}
   #ElementTab_length{margin-bottom: 10px;
-    text-align: center;
+    text-align: center; width:100%;
 }
   </style>
  
@@ -55,7 +56,7 @@
       </div>
       
 	  	<div id="outerContainerHis" class="marginBtm50"><!--outerContainer-->
-        	<table id="ElementTab" class="tableCenter" style="width:560px;margin-top:30px;">
+        	<table id="ElementTab" class="tableCenter" style="width:600px;padding-top: 30px;">
             	<thead>
             	<tr>
                 	<th>Entity Type</th>

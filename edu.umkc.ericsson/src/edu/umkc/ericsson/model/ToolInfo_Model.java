@@ -56,7 +56,7 @@ public class ToolInfo_Model {
 			e.printStackTrace();
 	 
 		}
-		tools.add(new ToolsInfo(1, "Dummy", 1));
+		
 		return null;
 	}
 
@@ -70,10 +70,7 @@ public class ToolInfo_Model {
 		try {
 			
 			Client client = Client.create();
-	 
-			
-			WebResource webResource = client
-			.resource(REQUEST_URL);
+			WebResource webResource = client.resource(REQUEST_URL);
 			System.out.println("Service for add tool"+REQUEST_URL);
 			ClientResponse response = webResource.accept("application/json")
 	                   .get(ClientResponse.class);
@@ -85,8 +82,6 @@ public class ToolInfo_Model {
 				System.out.println("Dataposted");
 			}
 			//System.out.println(response.getEntity(String.class));
-			
-			
 		}
 		catch (Exception e) {
 	 
