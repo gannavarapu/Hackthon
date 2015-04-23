@@ -4,29 +4,18 @@
 <%@page import="java.util.Iterator" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html> 
+    <!DOCTYPE html> 
 <html>
 
 <head>
-  <title>Element Management Page</title>
+  <title>KPI Management Page</title>
   <meta name="description" content="website description" />
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
-  <link rel="stylesheet" type="text/css" href="css/style.css" />
-  <link src="http://cdn.datatables.net/1.10.0/css/jquery.dataTables.css" rel="stylesheet"   type="text/css">
-<link src="//cdn.datatables.net/tabletools/2.2.1/css/dataTables.tableTools.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="css/style.css" />T
   <!-- modernizr enables HTML5 elements and feature detects -->
   <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
-   <style>
   
-  #ElementTab_info{display:none;}
-  #ElementTab_paginate{display:none;}
-  #ElementTab_filter,#ElementTab{text-align:center}
-  #ElementTab_length{margin-bottom: 10px;
-    text-align: center;
-}
-#ElementTab_wrapper{ display:block !important;}
-  </style>
 </head>
 
 <body>
@@ -34,29 +23,29 @@
     <header>
 	  <div id="banner">
 	    <div id="welcome">
-	      <h2>Element Management</h2>
+	      <h2>KPI Management</h2>
 	    </div><!--close welcome-->			  	
 	  </div><!--close banner-->	
 	</header>
 	
-	<nav>      
+		<nav>      
       <div id="menubar">
         <ul id="nav">
           <li><a href="dashboard.html">Home</a></li>
-          <li><a href="toolManagement.html">Tool Management</a></li>
-          <li class="current"><a href="#">Element Management</a></li>
-          <li><a href="kpiManagement.html">KPI Management</a></li>
+          <li><a href="toolManagement.jsp">Tool Management</a></li>
+          <li ><a href="elementManagement.jsp">Element Management</a></li>
+          <li class="current"><a href="kpiManagement.html">KPI Management</a></li>
           <li><a href="scheduleManagement.html">Schedule Management</a></li>
-          <li><a href="historyManagement.html">History Management</a></li> 
+          <li ><a href="historyManagement.html">History Management</a></li>
         </ul>
       </div>
     </nav>	
     
 	<div id="site_content">		
-		<form action="Element_Controller" name="element_manage" method="post">
+<form action="KPI_Controller" name="kpi_manage" method="post">
     	<div class="selectOption">
         	<label>Select Tool:</label>
-        	<select name="toolNameSelect" id="tools" onchange="document.element_manage.submit()">
+        	<select name="toolNameSelect" id="tools" onchange="document.kpi_manage.submit()">
             	
 
             	<%
@@ -70,106 +59,95 @@
             %>
             </select>
         </div><!-- selectOption close-->
-        <div id="outerContainer"><!-- outerContainer-->
-        <div class="elementview">
-            <table id="ElementTab" class="tableCenter" style="width:560px;margin-top:30px;">
-            	<thead>
+        <div id="outerContainer">
+        <div class="KPIview">
+            
+        	 <table id="currentTimeKpi" class="alignCenter">
+      <thead>
             	<tr>
-                	<th>ElementId</th>
-                    <th>ElementName</th>
-                    <th>TimeZone</th>
-                
-                    
-                </tr>
-                </thead>
-                <tbody>
+            	<th>KPI Id</th>
+            	<th>KPI Name</th>
+      	<th>Dark Green</th>
+      	<th>Green</th>
+      	<th>Red</th>
+      	<th>Yellow</th>
+      	
+      	
+      	</tr></thead>
+      	 <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr></tbody>
-               </table>
-        	
+                  
+                </tr></tbody>           	
+      </table><!-- ElementTab-->
                
         </div><!-- elementview CLOSE-->
         
         
-        <div class="elementadd">
+        <div class="KPIadd positonCenter">
            
             <table id="elementTable">
           		<tr>
                 	<td>
-          				ElementName:
+          				KPIName:
                 	</td>
                		<td> <input type="text" name="name" class="elementName"/>
                     </td>
                  </tr>
                  <tr>
                  <td>
-				ElementId:
+				KPIId:
                 </td>
                 <td><input type="text" name="id" class="elementid"/></td>
                 </tr>
-                <tr>
-                 <td>
-				TimeZone:
-                </td>
-                <td><input type="text" name="time" class="time"/></td>
-                </tr>
+                    <tr><td>Order:</td><td><input type="text" name="order" class="elementorder"/></td></tr>
+                    <tr><td>DarkGreenValue:</td><td><input type="text" name="darkGreen" class="elementdarkgreen"/></td></tr>
+                    <tr><td>GreenValue:</td><td><input type="text" name="green" class="elementgreen"/></td></tr>
+                    <tr><td>YellowValue:</td><td><input type="text" name="yellow" class="elementyellow"/></td></tr>
+                    <tr><td>OrangeValue:</td><td><input type="text" name="orange" class="elementorange"/></td></tr>
+                    <tr><td>RedValue:</td><td><input type="text" name="red" class="elementred"/></td></tr>
                   </table>
                   
                        	<span class="button_small displayBlock">
-		      <input type="submit" value=Go class="newBtn" name="elementAdd">
+		      <a>Go</a>
 		    </span>
                 </div><!--elementadd close-->
-              <div class="elementEdit">
+              <div class="KPIEdit">
               		<span class="selectOption displayBlock">
-                        <label>Select Element:</label>
-                        
-                        <select id="editelement">
-                            <%
-        	ArrayList<ElementInfo> elementsInfo =(ArrayList<ElementInfo>)session.getAttribute("elementInfo");
-        					if (elementsInfo !=null)
-                            for(ElementInfo e: elementsInfo)
-        	
-                            {
-        		
-        	%>
-        		
-            	<option value=<%=e.getElementName()  %>><%=e.getElementName()%></option>
-            <%
-        	                 }
-            %>
-                            <option select="selected">select</option> 
-                           
+                        <label>Select KPI:</label>
+                        <select>
+                            <option selected>Select</option>
+                            <option>ATLNGAUS-MME-01</option>
+                            <option>ATLNGAUS-MME-02</option>
+                            <option>ATLNGAUS-MME-03</option>
+                            
                         </select>
         			</span><!-- selectOption close-->
                     
                     <table id="elementTableEdit" class="positonCenter">
           		<tr>
                 	<td>
-          				ElementName:
+          				KPIName:
                 	</td>
-               		<td> <input type="text" id="elename" name="name" class="elementName"/>
+               		<td> <input type="text" name="name" class="elementName"/>
                     </td>
                  </tr>
                  
-                 <td>
-				 TimeZone:
-                </td>
-                <td><input type="text" id="timezone" name="time" class="time"/></td>
-                </tr>
+                 <tr><td>Order:</td><td><input type="text" name="order" class="elementorder"/></td></tr>
+                    <tr><td>DarkGreenValue:</td><td><input type="text" name="darkGreen" class="elementdarkgreen"/></td></tr>
+                    <tr><td>GreenValue:</td><td><input type="text" name="green" class="elementgreen"/></td></tr>
+                    <tr><td>YellowValue:</td><td><input type="text" name="yellow" class="elementyellow"/></td></tr>
+                    <tr><td>OrangeValue:</td><td><input type="text" name="orange" class="elementorange"/></td></tr>
+                    <tr><td>RedValue:</td><td><input type="text" name="red" class="elementred"/></td></tr>
                   </table>
                   <span class="elementEditGo">
-                       	<span class="button_small displayBlock">
-                              <input type="submit" value=Go class="newBtn" name="elementEdit" onclick="editData();">
+                       	<span class="button_small">
+                              <a>Go</a>
                             </span>
                    </span><!-- elementEditGo close-->
               </div><!-- elementEdit-->
-                <div class="elemStatus"><!-- element status-->
+                <div class="KPIStatus"><!-- Tool status-->
                     <span id="stat">
-                        <label>Element Status:</label>
+                        <label>KPI Status:</label>
                         <select>
                         <option selected>Select</option>
                         <option>Enable</option>
@@ -178,27 +156,28 @@
                     </span>
                     <span class="positionLeft" id="goBtn">
                    <span class="button_small" id="go">
-                     <input type="submit" value=Go class="newBtn" name="elementStatus">
+                      <a href="#">GO</a>
               		</span></span>
-        </div><!-- element sstatus close-->
-          </div><!--outerContainer-->      
+        </div><!-- Toolssstatus close-->
+        </div><!--outerContainer close-->
+                
         <div class="toolButtons">
-	  <span class="button_small" id="viewElement">
-		    <input id="button1" value="ViewElement" class="newBtn" onclick="getElementdata();"/>
+	  <span class="button_small" id="viewKPI">
+		      <input value="View KPI" class="newBtn" onclick="getKPIdata();"/>
 	  </span>
-      <span class="button_small" id="addElement">
-		      <a href="#">AddElement</a>
+      <span class="button_small" id="addKPI">
+		      <a href="#">AddKPI</a>
 	  </span>
       
-      <span class="button_small" id="editElement">
-		      <a href="#">EditElement</a>
+      <span class="button_small" id="editKPI">
+		      <a href="#">EditKPI</a>
 	  </span>
      
-      <span class="button_small" id="elementStatus">
-		      <a href="#">ElementStatus</a>
+      <span class="button_small" id="KPIStatus">
+		      <a href="#">KPIStatus</a>
 	  </span>
       </div><!-- buttons close-->
-	</form>
+      </form>
 	</div><!--close site_content-->  	
   
     <footer>
@@ -215,7 +194,6 @@
   <script type="text/javascript" src="js/sample3.js"></script>
   <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
   <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
-  
   
   
 </body>

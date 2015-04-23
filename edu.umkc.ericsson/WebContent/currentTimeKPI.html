@@ -7,17 +7,22 @@
   <meta name="keywords" content="website keywords, website keywords" />
   <meta http-equiv="content-type" content="text/html; charset=windows-1252" />
   <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/jquery.dataTables.css"/>
   <!-- modernizr enables HTML5 elements and feature detects -->
   <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
   <script>
-  function getDate()
-  {
-	  
-	  var d1 = new Date();
-	 var d2=d1.toUTCString();
-	 document.getElementById("kpiTime").innerHTML=d2;
-  }
+ 
   </script>
+   <style>
+  
+  #ElementTab_info{display:none;}
+  #ElementTab_paginate{display:none;}
+  #ElementTab_filter,#ElementTab{text-align:center}
+  #ElementTab_length{margin-bottom: 10px;
+    text-align: center;
+}
+#ElementTab_wrapper{ display:block !important;}
+  </style>
 </head>
 
 <body>
@@ -47,31 +52,30 @@
 	<div id="site_content" style="min-height:200px">		
 
     	 <div class="toolButtons">
-	  <span class="button_small" id="viewSchedule">
-		      <input type="submit" value="Current Time KPI List" class="newBtn" onclick="getDate();"/>
-	  </span>
+	<!--   <span class="button_small" id="viewSchedule">
+		      <input type="submit" display="none" value="Current Time KPI List" class="newBtn" onclick="getDate();"/>
+	  </span> -->
       </div>
-      <div class="alignCenter" id="kpiDisplay"> 
+      <div class="alignCenter" id="kpiDisplay1"> 
       <p><label>Current Time in GMT:</label>
       
       	<label id="kpiTime"></label>
       </p>
       
       <table id="currentTimeKpi" class="alignCenter">
-      	<tr><th>KPI ID</th><th>KPI NAME</th></tr>
-      	<tr>
-      	<td>1</td>
-                    <td>attach_lte</td></tr>
-                    <tr>
-                    <td>2</td>
-                    <td>paging_lte</td></tr>
-                    <tr>
-                    <td>4</td>
-                    <td>Create_Sess_Succ</td>
-                    </tr>
-                    
-                    
+      <thead>
+            	<tr><th>KPI Name</th>
+      	<th>Dark Green</th>
+      	<th>Green</th>
+      	<th>Red</th>
+      	<th>Yellow</th>
+      	<th>Tool Name</th>
       	
+      	</tr></thead>
+      	 <tbody>
+                <tr>
+                  
+                </tr></tbody>           	
       </table>
       
       </div>
@@ -86,7 +90,12 @@
   
   <!-- javascript at the bottom for fast page loading -->
   <script type="text/javascript" src="js/jquery.min.js"></script>
-  <script type="text/javascript" src="js/sample.js"></script>
+
+ <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+  <script type="text/javascript" src="js/sample4.js"></script>
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+  
   
   
 </body>

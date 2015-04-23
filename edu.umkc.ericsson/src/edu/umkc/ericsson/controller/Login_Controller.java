@@ -1,16 +1,20 @@
 package edu.umkc.ericsson.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.swing.JOptionPane;
 
+import edu.umkc.ericsson.bo.ToolsInfo;
 import edu.umkc.ericsson.bo.User;
 import edu.umkc.ericsson.model.Login_model;
+import edu.umkc.ericsson.model.ToolInfo_Model;
 
 /**
  * Servlet implementation class Login_Controller
@@ -38,6 +42,10 @@ public class Login_Controller extends HttpServlet {
 		Login_model loginUser = new Login_model();
 		if(loginUser.validate(usr))
 		{
+			ToolInfo_Model tools = new ToolInfo_Model();
+			ArrayList<ToolsInfo> toolsInfo=tools.getToolInfo();
+			HttpSession session =request.getSession();
+			session.setAttribute("toolsInfo", toolsInfo);
 			response.sendRedirect("dashboard.html");
 			return;
 			

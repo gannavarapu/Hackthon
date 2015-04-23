@@ -34,22 +34,15 @@ public class Element_Controller extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//ElementInfo elementOperations= new ElementInfo(new Integer( request.getParameter("id")), request.getParameter("name"), request.getParameter("name"), request.getParameter("toolName"), request.getParameter("time"), 1,"", "UMKC");
 		
-		/*if(request.getParameter("elementAdd")!=null){
-		ElementInfo_Model newElement = new ElementInfo_Model();
-		newElement.addElement(elementOperations);
-		
-		}*/
-HttpSession session=request.getSession();
+       HttpSession session=request.getSession();
 		
 		String toolname=(String)request.getParameter("toolNameSelect");
 		System.out.println(toolname);
 		session.setAttribute("selectedToolName",toolname);
 		ElementInfo_Model elements=new ElementInfo_Model();
 		
-		session.setAttribute("elementInfo", elements.getElements(toolname));;
+		session.setAttribute("elementInfo", elements.getElements(toolname));
 		if(request.getParameter("elementAdd")!=null){
 			ElementInfo elementOperations= new ElementInfo(new Integer(request.getParameter("id")), request.getParameter("name"), request.getParameter("name"), toolname, request.getParameter("time"), 1,"", "UMKC");
 			AddElement_model am= new AddElement_model();
